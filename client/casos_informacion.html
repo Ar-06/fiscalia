@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Registro de Caso</title>
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff; /* Color de fondo suave */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/5c/Logo_Ministerio_P%C3%BAblico_Per%C3%BA.png'); /* Ruta de la imagen de fondo */
+            background-repeat: no-repeat;
+            background-size: 30%;
+            background-position: top left;
+            background-position: 30px 10px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+        }
+
+        .header {
+            background-color: #003b82;
+            color: white;
+            padding: 10px;
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .header h2 {
+            margin: 0;
+            font-size: 1.1em;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #003b82;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: rgb(19, 81, 214);
+        }
+
+    </style>
+</head>
+<body>
+    <form action="">
+            <div class="header">
+                <h2>Información del Caso</h2>
+            </div>
+
+            <label for="codigo_expediente">Código de Expediente:</label>
+            <input type="text" id="codigo_expediente" name="codigo_expediente" required><br>
+            <label for="gravedad_caso">Gravedad del Caso:</label>
+            <select id="gravedad_caso" name="gravedad_caso" required>
+                <option value="leve">Leve</option>
+                <option value="moderada">Moderada</option>
+                <option value="grave">Grave</option>
+            </select><br>
+            <label for="estado_caso">Estado del Caso:</label>
+            <select id="estado_caso" name="estado_caso" required>
+                <option value="en_investigacion">En Investigación</option>
+                <option value="cerrado">Cerrado</option>
+                <option value="archivado">Archivado</option>
+            </select><br>
+            <label for="fecha_apertura">Fecha de Apertura del Caso:</label>
+            <input type="date" id="fecha_apertura" name="fecha_apertura" required><br>
+            <label for="fiscal_asignado">Fiscal Asignado:</label>
+            <input type="text" id="fiscal_asignado" name="fiscal_asignado" required><br>
+
+        <input type="submit" value="Registrar Caso">
+    </form>
+</body>
+</html>

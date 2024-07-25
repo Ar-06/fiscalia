@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regístrate aquí</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <center>
+            <div class="container">
+                <div class="header">
+                    <h2>Registro de usuario</h2>
+                </div>
+                <form id="userForm" border="1" action="../php/registro.php" onsubmit="return verificarDocumento();" method="POST">
+                    <label>Tipo de documento:
+                        <select name="TipoDoc">
+                            <option value="1">DNI</option>
+                            <option value="2">Carné de extranjería</option>
+                            <option value="3">Registro Único de Contribuyente</option>
+                        </select>
+                    </label>
+                    
+                    <label>Número de documento:</label> 
+                    <input type="text" name="numDoc" placeholder="Número Doc" required> 
+                    <label>Correo electrónico:</label>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <label>Contraseña:</label>
+                    <input type="password" name="contraseña" id="contra1" placeholder="Contraseña" required>
+                    <label>Confirmar contraseña</label>
+                    <input type="password" name="contraseña2" id="contra2" placeholder="Contraseña" required>
+                    <input type="submit" class="submit-btn" value="Registrarse">
+                </form>
+            </div>
+        </center>
+    </div>
+</body>
+    <script src="../js/verificar_doc.js"></script>
+</html>  

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Denuncias</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .filter-container {
+            margin-bottom: 20px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            /* display: flex; */
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 100px 20px 20px 20px;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/5c/Logo_Ministerio_P%C3%BAblico_Per%C3%BA.png'); /* Ruta de la imagen de fondo */
+            background-repeat: no-repeat;
+            background-size: 25%;
+            background-position: top left;
+            background-position: 15px 15px;
+        }
+        form label,select {
+            display: block;
+            margin: 10px 0px 5px;
+            color: #555;
+            text-align: justify;
+        }
+        input,select{
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 450px;
+        }
+        .submit-btn {
+            background-color: #003b82;
+            color: white;
+            margin-top: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            width: 100%;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .submit-btn:hover {
+            background-color: #2b8ef1;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Consulta de Denuncias</h1>
+    <br><br>
+    <div class="filter-container">
+        <label for="searchIdDenuncia">Buscar por IdDenuncia:</label>
+        <input type="text" id="searchIdDenuncia" name="searchIdDenuncia">
+        
+        <label for="searchDenunciante">Buscar por Nombre de Denunciante:</label>
+        <input type="text" id="searchDenunciante" name="searchDenunciante">
+
+        <button onclick="executeSearch()">Buscar</button>
+    </div>
+
+    <div class="filter-container">
+        <label for="filterFecha">Filtrar por Fecha Específica:</label>
+        <input type="date" id="filterFecha" name="filterFecha">
+
+        <label for="filterIdDenuncia">Filtrar por IdDenuncia:</label>
+        <input type="text" id="filterIdDenuncia" name="filterIdDenuncia">
+
+        <label for="filterRecepcionista">Filtrar por Nombre de Recepcionista:</label>
+        <input type="text" id="filterRecepcionista" name="filterRecepcionista">
+
+        <button onclick="applyFilters()">Aplicar Filtros</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>IdDenuncia</th>
+                <th>Asunto</th>
+                <th>Denunciante</th>
+                <th>Descripción</th>
+                <th>Fecha Presentación</th>
+                <th>Hora</th>
+                <th>Mesa de Partes / Nombre de Recepcionista</th>
+            </tr>
+        </thead>
+        <tbody id="denunciasTable">
+            <!-- Aquí se insertarán las filas de denuncias -->
+            <tr>
+                <td>1</td>
+                <td>Asunto1</td>
+                <td>Juan Pérez</td>
+                <td>Descripción del problema...</td>
+                <td>2023-07-01</td>
+                <td>10:30</td>
+                <td>Carla López</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Asunto2</td>
+                <td>Chappell Roan</td>
+                <td>Descripción del problema...</td>
+                <td>2023-07-02</td>
+                <td>17:20</td>
+                <td>Carla López</td>
+            </tr>
+            <!-- Más filas de ejemplo -->
+        </tbody>
+    </table>
+
+    <script>
+        function executeSearch() {
+            var searchId = document.getElementById("searchIdDenuncia").value.toLowerCase();
+            var searchDenunciante = document.getElementById("searchDenunciante").value.toLowerCase();
+            var table = document.getElementById("denunciasTable");
+            var tr = table.getElementsByTagName("tr");
+
+            for (var i = 0; i < tr.length; i++) {
+                var tdId = tr[i].getElementsByTagName("td")[0];
+                var tdDenunciante = tr[i].getElementsByTagName("td")[2];
+                if (tdId && tdDenunciante) {
+                    var idValue = tdId.textContent.toLowerCase();
+                    var denuncianteValue = tdDenunciante.textContent.toLowerCase();
+                    if (idValue.indexOf(searchId) > -1 && denuncianteValue.indexOf(searchDenunciante) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }       
+            }
+        }
+
+        function applyFilters() {
+            var filterFecha = document.getElementById("filterFecha").value;
+            var filterId = document.getElementById("filterIdDenuncia").value.toLowerCase();
+            var filterRecepcionista = document.getElementById("filterRecepcionista").value.toLowerCase();
+            var table = document.getElementById("denunciasTable");
+            var tr = table.getElementsByTagName("tr");
+
+            for (var i = 0; i < tr.length; i++) {
+                var tdFecha = tr[i].getElementsByTagName("td")[4];
+                var tdId = tr[i].getElementsByTagName("td")[0];
+                var tdRecepcionista = tr[i].getElementsByTagName("td")[6];
+                if (tdFecha && tdId && tdRecepcionista) {
+                    var fechaValue = tdFecha.textContent;
+                    var idValue = tdId.textContent.toLowerCase();
+                    var recepcionistaValue = tdRecepcionista.textContent.toLowerCase();
+                    if ((fechaValue.indexOf(filterFecha) > -1 || !filterFecha) && 
+                        (idValue.indexOf(filterId) > -1 || !filterId) && 
+                        (recepcionistaValue.indexOf(filterRecepcionista) > -1 || !filterRecepcionista)) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }       
+            }
+        }
+    </script>
+</body>
+</html>

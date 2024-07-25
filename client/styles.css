@@ -1,0 +1,122 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    overflow-y: auto;
+    display: flex;
+    height: 100vh;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/5c/Logo_Ministerio_P%C3%BAblico_Per%C3%BA.png');
+    background-repeat: no-repeat;
+    background-size: 30%;
+    background-position: top left;
+    background-position: 15px 15px;
+}
+
+.container {
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    height: max-content;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.header img {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+.panel-heading {
+    text-align: center;
+    font-weight: bold;
+    background-color: #003b82;
+}
+
+.panel-body, .panel-footer {
+    text-align: justify;
+}
+
+
+.inputtext {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid black;
+}
+
+.justify {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+th {
+    color: none;
+}
+
+.espaciado {
+    padding-top: 1%;
+}
+
+.personalizadoinput {
+    padding-left: 15px !important;
+}
+
+.inputhorario {
+    width: 30%;
+}
+
+.help-block {
+    display: block !important;
+    margin-top: 5px !important;
+    margin-bottom: 10px !important;
+    color: #a94442 !important;
+}
+
+.error {
+    color: #a94442;
+    border-color: #a94442;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 1.0;
+    background-color: #eee;
+    cursor: not-allowed;
+}
+
+input[type=checkbox] + label {
+    color: red;
+    font-style: normal;
+}
+
+input[type=checkbox]:checked + label {
+    color: black;
+    font-style: italic;
+}
+
+.hint {
+    font-size: 11px;
+    color: #8A8A8A;
+}
+
+select + .select2-container {
+    width: 100% !important;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <center>
+            <div class="container">
+                <div class="header">
+                    <h2>Completa tus datos</h2>
+                </div>
+                <form id="userForm2" border="1" action="../php/registro2.php" method="POST">
+                    <label>Nombres y Apellidos:</label> 
+                    <input type="text" id="nombre" name="nombres" placeholder="Nombres" required>
+                    <label>Fecha de nacimiento</label> 
+                    <input type="date" name="fecha" id="fechanac"> 
+                    <label>Número de celular:</label>
+                    <input type="text" id="apellidos" name="celular" placeholder="Número de celular" required>
+                    <label>Dirección:</label> 
+                    <input type="text" id="apellidos" name="direccion" placeholder="Dirección" required>
+                    <input type="submit" class="submit-btn" value="Completar registro">
+                </form>
+            </div>
+        </center>
+    </div>
+</body>
+</html>

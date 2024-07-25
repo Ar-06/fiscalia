@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte Diario de Denuncias</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Reporte Diario de Denuncias</h1>
+    <p><strong>Fecha del Reporte:</strong> [Fecha de Generación del Reporte]</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Fecha de Denuncia</th>
+                <th>Total de Denuncias</th>
+                <th>Denuncias Ayer</th>
+                <th>Denuncias Hoy</th>
+                <th>Denuncias Últimos 7 Días</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2024-07-01</td>
+                <td>8</td>
+                <td>5</td>
+                <td>8</td>
+                <td>35</td>
+            </tr>
+            <tr>
+                <td>2024-06-30</td>
+                <td>5</td>
+                <td>7</td>
+                <td>5</td>
+                <td>30</td>
+            </tr>
+            <!-- Más filas según sea necesario -->
+        </tbody>
+    </table>
+
+    <h2>Gráfico de Líneas de Denuncias Diarias</h2>
+    <canvas id="lineChart"></canvas>
+
+    <h2>Gráfico de Barras Comparativo</h2>
+    <canvas id="barChart"></canvas>
+
+    <script>
+        const lineCtx = document.getElementById('lineChart').getContext('2d');
+        const barCtx = document.getElementById('barChart').getContext('2d');
+
+        // Datos de ejemplo para el gráfico de líneas
+        const lineData = {
+            labels: ['2024-06-25', '2024-06-26', '2024-06-27', '2024-06-28', '2024-06-29', '2024-06-30', '2024-07-01'],
+            datasets: [{
+                label: 'Denuncias Diarias',
+                data: [5, 7, 6, 4, 8, 5, 8],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                fill: true
+            }]
+        };
+
+        // Opciones del gráfico de líneas
+        const lineOptions = {
+            responsive: true,
+            scales: {
+                x: {
+                    display: true,
+                    title: {
+                        display: true,
+                        text: 'Fechas'
+                    }
+                },
+                y: {
+                    display: true,
+                    title: {
+                        display: true,
+                        text: 'Número de Denuncias'
+                    }
+                }
+            }
+        };
+
+        // Crear gráfico de líneas
+        new Chart(lineCtx, {
+            type: 'line',
+            data: lineData,
+            options: lineOptions
+        });
+
+        // Datos de ejemplo para el gráfico de barras
+        const barData = {
+            labels: ['Ayer', 'Hoy', 'Últimos 7 Días'],
+            datasets: [{
+                label: 'Número de Denuncias',
+                data: [5, 8, 35],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        // Opciones del gráfico de barras
+        const barOptions = {
+            responsive: true,
+            scales: {
+                x: {
+                    display: true,
+                    title: {
+                        display: true,
+                        text: 'Periodo'
+                    }
+                },
+                y: {
+                    display: true,
+                    title: {
+                        display: true,
+                        text: 'Número de Denuncias'
+                    }
+                }
+            }
+        };
+
+        // Crear gráfico de barras
+        new Chart(barCtx, {
+            type: 'bar',
+            data: barData,
+            options: barOptions
+        });
+    </script>
+</body>
+</html>

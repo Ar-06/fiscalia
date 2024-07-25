@@ -1,0 +1,105 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #dfeefc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/5c/Logo_Ministerio_P%C3%BAblico_Per%C3%BA.png'); /* Ruta de la imagen de fondo */
+    background-repeat: no-repeat;
+    background-size: 25%;
+    background-position: top left;
+    background-position: 15px 15px;
+}
+.denuncia:nth-child(1){
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    width: 90%;
+}
+.denuncia {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    width: 90%;
+}
+.denuncia h2 {
+    margin-top: 0px;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+.estado {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    text-align: right;
+}
+
+.estado p {
+    margin: 0;
+}
+
+.estado .estado-label {
+    font-size: 12px;
+    color: #555;
+}
+
+.estado .estado-rec {
+    font-size: 16px;
+    font-weight: bold;
+    color: #28a745;
+}
+
+.estado .estado-enviado {
+    font-size: 16px;
+    font-weight: bold;
+    color: #2839a7;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 10px 0;
+}
+
+.detalle {
+    margin-top: 10px;
+}
+
+.detalle p {
+    margin: 5px 0;
+}
+#seguimiento{
+    text-align: center;
+    margin-bottom: 30px;
+}
+.btn-seg {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn-seg button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-seg button:hover {
+    background-color: #2980b9;
+}

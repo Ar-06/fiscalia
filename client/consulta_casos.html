@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Consulta de Carga</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f8f9fa;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        header img {
+            width: 150px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            font-size: 24px;
+        }
+        form, .btn-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #343a40;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 200px;
+            font-size: 16px;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const datos = [
+                { idCaso: 1, asunto: "Robo en tienda", carga: 20 },
+                { idCaso: 2, asunto: "Fraude bancario", carga: 15 },
+                { idCaso: 3, asunto: "Violencia doméstica", carga: 30 },
+                { idCaso: 4, asunto: "Accidente de tráfico", carga: 22 },
+                { idCaso: 5, asunto: "Estafa telefónica", carga: 25 },
+                { idCaso: 6, asunto: "Hurto de vehículo", carga: 18 },
+                { idCaso: 7, asunto: "Vandalismo", carga: 16 },
+                { idCaso: 8, asunto: "Secuestro", carga: 40 },
+                { idCaso: 9, asunto: "Contrabando", carga: 35 },
+                { idCaso: 10, asunto: "Lavado de dinero", carga: 28 }
+            ];
+
+            const form = document.querySelector('form');
+            const tbody = document.querySelector('tbody');
+            const btnMostrarTodos = document.getElementById('btnMostrarTodos');
+
+            function mostrarDatos(filtrarPorId = null) {
+                tbody.innerHTML = ''; // Limpiar tabla actual
+                datos.filter(caso => filtrarPorId === null || caso.idCaso == filtrarPorId)
+                    .forEach(caso => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `<td>${caso.idCaso}</td><td>${caso.asunto}</td><td>${caso.carga}</td>`;
+                        tbody.appendChild(tr);
+                    });
+            }
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Evitar recargar la página
+                const idCaso = document.getElementById('idCaso').value;
+                mostrarDatos(idCaso);
+            });
+
+            btnMostrarTodos.addEventListener('click', function() {
+                mostrarDatos();
+            });
+
+    
+            mostrarDatos();
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Logo_Ministerio_P%C3%BAblico_Per%C3%BA.png" alt="Logo Ministerio Público Perú" class="img-responsive">
+        <h1>Consulta de Carga</h1>
+    </header>
+    <form>
+        <label for="idCaso">ID del Caso:</label>
+        <input type="text" id="idCaso" name="idCaso" required>
+        <button type="submit">Buscar</button>
+    </form>
+    <div class="btn-container">
+        <button id="btnMostrarTodos">Mostrar Todos</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID del Caso</th>
+                <th>Asunto</th>
+                <th>Carga del Caso</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Los datos se insertarán aquí por JavaScript -->
+        </tbody>
+    </table>
+</body>
+</html>
