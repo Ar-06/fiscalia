@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="container">
-        <form action="" method="post" enctype="multipart/form-data" novalidate id="frmdenunciarh">
+        <form action="../php/registro_denuncia.php" method="post" enctype="multipart/form-data" id="frmdenunciarh">
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: #003b82; font-size: large;color: white;"><strong>Formulario de Denuncia</strong></div>
                 <div class="panel-body">
@@ -83,13 +83,14 @@
                             <div id="divmedios">
                                 <div class="form-group">
                                     <label>Adjuntar Archivo &nbsp;&nbsp; <span class="hint">Máximo 30 MB</span></label>
-                                    <input type="file" accept="image/*,audio/*,video/*,application/pdf" onchange="ValidateSize(this)" class="filex" name="txtImage[]" id="imageinput">
+                                    <input type="file" accept="image/*,audio/*,video/*,application/pdf" onchange="ValidateSize(this)" class="filex" name="txtImage" id="imageinput">
+                                    
                                 </div>
                             </div>
                             <div>
                                 <div class="form-group">
                                     <label>Si el archivo es muy pesado, añade un enlace.</label> <br>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="enlace">
                                 </div>
                             </div>
                         </div>

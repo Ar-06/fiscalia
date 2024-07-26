@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    if (!isset($_SESSION["nombres"])) {
+        /* header("location: ../client/login.html"); */
+        echo "Sesión no iniciada";
+        exit;
+    }
+    $nombre_usuario = $_SESSION["nombres"];
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,18 +16,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="welcome"><h1>Bienvenido(a), Usuario</h1></div>
+    <div class="welcome">
+        <h1 id="user">Bienvenido(a), <?php echo htmlspecialchars ($nombre_usuario); ?></h1>
+    </div>
     <div class="container2">
         <a class="form_denuncia" href="./formulario_denuncia.html">
             <div class="section registrar">
                 <img src="https://cdn.icon-icons.com/icons2/2596/PNG/512/log_icon_155172.png" alt="Icono Registrar">
-                <p>Registrar nueva denuncia</p>
+                <p>Realiza tu denuncia</p>
             </div>
         </a>
         <a class="form_seguimiento" href="./seguimiento.html">
             <div class="section seguimiento">
                 <img src="https://cdn-icons-png.flaticon.com/512/4829/4829845.png" alt="Icono Seguimiento">
-                <p>Seguimiento de denuncia</p>
+                <p>Sigue tus denuncias</p>
             </div>
         </a>
         <a class="form_logout" href="../php/logout.php">

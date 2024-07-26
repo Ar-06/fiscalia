@@ -1,5 +1,6 @@
 <?php
 include('./conexion.php');
+session_start();
 
 $tipo = mysqli_real_escape_string($con, $_POST["TipoDoc"]);
 $num = mysqli_real_escape_string($con, $_POST["numDoc"]);
@@ -19,6 +20,8 @@ $sql = "INSERT INTO usuario (nro_doc, tipo_doc, correo, contrasena) VALUES (?, ?
 $stmt = mysqli_prepare($con, $sql);
 mysqli_stmt_bind_param($stmt, 'ssss', $num, $tipo, $email, $pass);
 $res = mysqli_stmt_execute($stmt);
+$_SESSION["doc"] = $num;
+
 
 if ($res) {
     header("location: ../client/registro_usuario2.html");
